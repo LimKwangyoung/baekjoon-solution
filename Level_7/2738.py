@@ -1,15 +1,12 @@
 N, M = map(int, input().split())
 
-result = []
+A, B = [], []
 for _ in range(N):
-    result.append([0] * M)
-for _ in range(2):
-    for i in range(N):
-        line = list(map(int, input().split()))
-        for j in range(M):
-            result[i][j] += line[j]
+    A.append(list(map(int, input().split())))
+for _ in range(N):
+    B.append(list(map(int, input().split())))
 
-for i in result:
-    for j in i:
-        print(j, end=' ')
+for i in range(N):
+    for j in range(M):
+        print(A[i][j] + B[i][j], end=' ')
     print()
