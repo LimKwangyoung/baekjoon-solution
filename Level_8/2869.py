@@ -20,4 +20,4 @@ print(math.ceil((V - A) / (A - B) + 1))
 A, B, V = map(int, input().split())
 
 num = (V - A) / (A - B) + 1
-print(int(num) if num == int(num) else int(num) + 1) # faster than the ceil function
+print(int(num) if num == int(num) else int(num) + 1)  # faster than the ceil function
