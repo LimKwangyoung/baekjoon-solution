@@ -25,7 +25,7 @@ while num * num <= N:
         if not num % i:
             break
         i += 1
-    else: # case of prime number
+    else:  # case of prime number
         while not N % num:
             print(num)
             N //= num
