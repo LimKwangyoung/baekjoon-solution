@@ -1,4 +1,4 @@
 n = int(input())
 
+print(n)
 print(1)
-print(0)
