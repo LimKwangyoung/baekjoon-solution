@@ -21,8 +21,8 @@ result = 0
 for i in range(N - 2):
     for j in range(i + 1, N - 1):
         for k in range(j + 1, N):
-            # sum for each case. faster than Solution 1 (using module).
-            total = num_lst[i] + num_lst[j] + num_lst[k]
+            # sum for each case.
+            total = num_lst[i] + num_lst[j] + num_lst[k]  # faster than Solution 1 (using module).
             if result < total <= M:
                 result = total
 print(result)
