@@ -30,5 +30,5 @@ for _ in range(T):
     a, b = A, B
 
     while a % b != 0:
-        a, b = b, a % b
+        a, b = b, a % b  # it is faster than Solution 1.
     print(A * B // b)  # b is GCD.
