@@ -27,7 +27,7 @@ else:
 # Solution 2 (Sieve of Eratosthenes)
 M, N = map(int, sys.stdin.readline().split())
 
-num_lst = [False, False] + [True] * (N - 1)  # it starts at 0.
+num_lst = [False, False] + [True] * (N - 1)
 i = 2
 while i * i <= N:
     if num_lst[i]:

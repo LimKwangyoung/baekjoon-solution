@@ -1,19 +1,19 @@
 import sys
 
 # Solution 1
-# num_lst = [False, False] + [True] * (2 * 123456 - 1)
-# while True:
-#     n = int(sys.stdin.readline())
-#     if n <= 0:
-#         break
-#
-#     i = 2
-#     while i * i <= 2 * n:
-#         if num_lst[i] is True:
-#             for j in range(2 * i, 2 * n + 1, i):
-#                 num_lst[j] = False
-#         i += 1
-#     print(sum(num_lst[n + 1:2 * n + 1]))
+num_lst = [False, False] + [True] * (2 * 123456 - 1)
+while True:
+    n = int(sys.stdin.readline())
+    if n <= 0:
+        break
+
+    i = 2
+    while i * i <= 2 * n:
+        if num_lst[i] is True:
+            for j in range(2 * i, 2 * n + 1, i):
+                num_lst[j] = False
+        i += 1
+    print(sum(num_lst[n + 1:2 * n + 1]))
 
 
 # Solution 2
