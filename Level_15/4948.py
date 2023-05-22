@@ -50,4 +50,4 @@ while True:
     n = int(sys.stdin.readline())
     if n <= 0:
         break
-    print(bin_search(Prime_List, 2 * n) - bin_search(Prime_List, n))
+    print(bin_search(Prime_List, 2 * n) - bin_search(Prime_List, n))  # it is faster than Solution 1.
