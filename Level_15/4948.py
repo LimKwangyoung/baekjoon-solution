@@ -17,10 +17,10 @@ while True:
 
 
 # Solution 2
-def prime_list(num: int) -> list:
+def get_prime_list(num: int) -> list:
     if num <= 1:
         return []
-    num_lst = [False, False] + [True] * (num - 1)  # it starts at 0.
+    num_lst = [False, False] + [True] * (num - 1)
     i = 3  # only handle odd numbers.
     while i * i <= num:
         if num_lst[i]:
@@ -44,10 +44,10 @@ def bin_search(lst: list, key: int) -> int:
     return pl
 
 
-Prime_List = prime_list(2 * 123456)
+PrimeList = get_prime_list(2 * 123456)
 
 while True:
     n = int(sys.stdin.readline())
     if n <= 0:
         break
-    print(bin_search(Prime_List, 2 * n) - bin_search(Prime_List, n))  # it is faster than Solution 1.
+    print(bin_search(PrimeList, 2 * n) - bin_search(PrimeList, n))  # it is faster than Solution 1.
