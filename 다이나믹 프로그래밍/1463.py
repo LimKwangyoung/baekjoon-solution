@@ -43,7 +43,6 @@ def topdown(num: int) -> int:  # it is faster than Solution 1.
 
 print(topdown(N))
 
-
 # Solution 3 (TopDown: stack)
 N = int(sys.stdin.readline())
 cnt_dict = {1: 0}
@@ -60,7 +59,7 @@ def case(num: int) -> tuple:
         return num - 1, num - 1
 
 
-stack_lst = [N]
+stack_lst = [N]  # it is faster than Solution 1.
 while stack_lst:
     n = stack_lst[-1]
     if n in cnt_dict:
@@ -76,6 +75,5 @@ while stack_lst:
         stack_lst.append(a)
     if b not in cnt_dict and a != b:
         stack_lst.append(b)
-
 
 print(cnt_dict[N])
