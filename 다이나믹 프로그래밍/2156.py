@@ -6,27 +6,11 @@ wine_lst = []
 for _ in range(n):
     wine_lst.append(int(sys.stdin.readline()))
 
-def bottomup(idx: int) -> int:
-    maximum = -sys.maxsize
+total_lst = [0] * n
 
-    stack = [(idx, 0, False)]
-    while stack:
-        idx, total, prev = stack.pop()
-        if idx >= n:
-            continue
-        total += wine_lst[idx]
-        if (idx == n - 1) or (idx == n - 2 and prev):
-            maximum = max(maximum, total)
-            continue
-
-        if prev:
-            stack.append((idx + 2, total, False))
-            stack.append((idx + 3, total, False))
-        else:
-            stack.append((idx + 1, total, True))
-            stack.append((idx + 2, total, False))
-
-    return maximum
-
-
-print(max(bottomup(0), bottomup(1)))
+total_lst[0] = wine_lst[0]
+total_lst[1] = wine_lst[0] + wine_lst[1]
+total_lst[2] = max(wine_lst[0] + wine_lst[2], wine_lst[1] + wine_lst[2], total_lst[1])
+for i in range(3, n):
+    total_lst[i] = max(total_lst[i - 3] + wine_lst[i - 1] + wine_lst[i], total_lst[i - 2] + wine_lst[i], total_lst[i - 1])
+print(max(total_lst))
