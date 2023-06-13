@@ -2,7 +2,8 @@ import sys
 
 N = int(sys.stdin.readline())
 
-cnt_lst = [0, 1]
+# count of the last number for 0 and 1.
+dp = [0, 1]
 for _ in range(2, N + 1):
-    cnt_lst = [cnt_lst[0] + cnt_lst[1], cnt_lst[0]]
-print(sum(cnt_lst))
+    dp = [dp[0] + dp[1], dp[0]]
+print(sum(dp))

@@ -12,10 +12,11 @@ print(result % 10007)
 # Solution 2 (BottomUp)
 n = int(sys.stdin.readline())
 
-cnt_dict = [0, 1, 2] + [0] * (n - 2)  # it is faster than Solution 1.
+dp = [0, 1, 2] + [0] * (n - 2)  # it is faster than Solution 1.
 for i in range(3, n + 1):
-    cnt_dict[i] = cnt_dict[i - 2] + cnt_dict[i - 1]
-print(cnt_dict[n] % 10007)
+    # cases for starting at 1X2 and 2X1.
+    dp[i] = dp[i - 2] + dp[i - 1]
+print(dp[n] % 10007)
 
 # Solution 3 (BottomUp)
 n = int(sys.stdin.readline())

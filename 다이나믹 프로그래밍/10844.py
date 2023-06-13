@@ -2,13 +2,14 @@ import sys
 
 N = int(sys.stdin.readline())
 
-cnt_lst = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+# count of the last number from 0 to 9.
+dp = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 for _ in range(N - 1):
-    lst = [0] * 10
-    lst[0] = cnt_lst[1]
+    temp = [0] * 10
+    temp[0] = dp[1]
     for i in range(1, 9):
-        lst[i] = cnt_lst[i - 1] + cnt_lst[i + 1]
-    lst[9] = cnt_lst[8]
+        temp[i] = dp[i - 1] + dp[i + 1]
+    temp[9] = dp[8]
 
-    cnt_lst = lst
-print(sum(cnt_lst) % 1000000000)
+    dp = temp
+print(sum(dp) % 1000000000)
