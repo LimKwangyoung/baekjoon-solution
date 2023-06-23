@@ -11,10 +11,14 @@ for i in range(1, N):
     for j in range(i):
         if A[j] < A[i]:
             dp_1[i] = max(dp_1[j] + 1, dp_1[i])
-        if A[::-1][j] < A[::-1][i]:
+
+A.reverse()
+for i in range(1, N):
+    for j in range(i):
+        if A[j] < A[i]:
             dp_2[i] = max(dp_2[j] + 1, dp_2[i])
 
-result = [0] * N
+maximum = 0
 for i in range(N):
-    result[i] = dp_1[i] + dp_2[N - 1 - i] - 1
-print(max(result))
+    maximum = max(maximum, dp_1[i] + dp_2[i] - 1)
+print(maximum)
