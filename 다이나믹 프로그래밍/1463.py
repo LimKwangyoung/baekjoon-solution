@@ -2,8 +2,8 @@ import sys
 
 # Solution 1 (BottomUP)
 N = int(sys.stdin.readline())
-dp = [0] * (N + 1)
 
+dp = [0] * (N + 1)
 for i in range(2, N + 1):
     # case for subtracting 1.
     dp[i] = dp[i - 1] + 1
@@ -18,6 +18,7 @@ print(dp[N])
 
 # Solution 2 (TopDown: recursion)
 N = int(sys.stdin.readline())
+
 dp = {1: 0}
 
 
@@ -45,6 +46,7 @@ print(topdown(N))
 
 # Solution 3 (TopDown: stack)
 N = int(sys.stdin.readline())
+
 dp = {1: 0}
 
 
