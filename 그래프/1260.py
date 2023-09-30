@@ -2,34 +2,34 @@ import sys
 import collections
 
 
-def dfs_recursion(start: int) -> list:
-    def dfs(vertex: int, lst: list):
+def dfs(start: int) -> list:
+    def search(vertex: int, lst: list):
         lst.append(vertex)
         visited[vertex] = True
         for v in graph[vertex]:
             if not visited[v]:
-                dfs(v, lst)
+                search(v, lst)
         return lst
 
     visited = [False] * (N + 1)
-    return dfs(start, [])
+    return search(start, [])
 
 
-def dfs_stack(start: int) -> list:
-    for v in graph:
-        graph[v].sort(reverse=True)
-
-    result = []
-    visited = [False] * (N + 1)
-    stack = [start]
-    while stack:
-        vertex = stack.pop()
-        if not visited[vertex]:
-            result.append(vertex)
-            visited[vertex] = True
-            for v in graph[vertex]:
-                stack.append(v)
-    return result
+# def dfs(start: int) -> list:
+#     for v in graph:
+#         graph[v].sort(reverse=True)
+#
+#     result = []
+#     visited = [False] * (N + 1)
+#     stack = [start]
+#     while stack:
+#         vertex = stack.pop()
+#         if not visited[vertex]:
+#             result.append(vertex)
+#             visited[vertex] = True
+#             for v in graph[vertex]:
+#                 stack.append(v)
+#     return result
 
 
 def bfs(start: int) -> list:
@@ -57,6 +57,5 @@ for _ in range(M):
 for i in graph:
     graph[i].sort()
 
-print(*dfs_recursion(V))
-# print(*dfs_stack(V))
+print(*dfs(V))
 print(*bfs(V))
