@@ -3,19 +3,19 @@ import collections
 
 M, N = map(int, sys.stdin.readline().split())
 
-no_tomato = 0
+tomato, no_tomato = 0, 0
 grid = []
 que = collections.deque()
 for i in range(N):
     lst = list(map(int, sys.stdin.readline().split()))
-    no_tomato += lst.count(-1)
-    grid.append(lst[:])
-    while 1 in lst:
-        idx = lst.index(1)
-        que.append((i, idx, 0))
-        lst[idx] = 0
+    grid.append(lst)
+    for j in range(M):
+        if lst[j] == 1:
+            que.append((i, j, 0))
+            tomato += 1
+        elif lst[j] == -1:
+            no_tomato += 1
 
-tomato = len(que)
 while que:
     row, col, day = que.popleft()
     coordinate = [(row - 1, col), (row, col + 1), (row + 1, col), (row, col - 1)]
