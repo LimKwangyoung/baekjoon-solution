@@ -34,7 +34,7 @@ while que:
     row, col = que.popleft()
     coordinate = [(row, col + 1), (row + 1, col), (row, col - 1), (row - 1, col)]
     for i, j in coordinate:
-        if 0 <= i < N and 0 <= j < M and grid[i][j] and not visited[i][j]:
+        if 0 <= i < N and 0 <= j < M and grid[i][j] > 0 and not visited[i][j]:
             que.append((i, j))
             grid[i][j] = grid[row][col] + 1
             visited[i][j] = True
