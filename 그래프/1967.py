@@ -5,7 +5,7 @@ import collections
 def dfs(start: int) -> tuple[int, int]:
     max_distance, max_vertex = -sys.maxsize, 0
 
-    visited = [False] * (V + 1)
+    visited = [False] * (n + 1)
     stack = [(start, 0)]
     while stack:
         vertex, distance = stack.pop()
@@ -21,12 +21,12 @@ def dfs(start: int) -> tuple[int, int]:
     return max_vertex, max_distance
 
 
-V = int(sys.stdin.readline())
+n = int(sys.stdin.readline())
 
 tree = collections.defaultdict(list)
-for _ in range(V):
-    lst = list(map(int, sys.stdin.readline().split()))[:-1]
-    for i in range(1, len(lst), 2):
-        tree[lst[0]].append([lst[i], lst[i + 1]])  # [vertex, distance]
+for lst in sys.stdin.readlines():
+    parent, child, weight = map(int, lst.split())
+    tree[parent].append([child, weight])
+    tree[child].append([parent, weight])
 
 print(dfs(dfs(1)[0])[1])
