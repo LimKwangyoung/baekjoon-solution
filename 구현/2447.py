@@ -42,4 +42,5 @@ def star(n: int) -> list:
 
 
 N = int(sys.stdin.readline())
+
 print('\n'.join(star(N)))

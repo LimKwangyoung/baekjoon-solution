@@ -19,4 +19,5 @@ def star(k) -> list:
 
 
 K = int(math.log2(int(sys.stdin.readline()) // 3))
+
 print('\n'.join(star(K)))
