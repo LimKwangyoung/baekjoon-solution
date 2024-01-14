@@ -1,23 +1,43 @@
 import sys
+import collections
 
 
-def hanoi(plate: list, start: int, end: int) -> None:
-    if not plate:
+# Solution 1
+def hanoi(n: int, start: int, end: int) -> None:
+    if n == 1:
+        print(f'{start} {end}')
         return
 
-    for mid in range(1, 4):
-        if mid not in (start, end):
-            break
-    hanoi(plate[:-1], start, mid)
-    result.append((start, end))
-    hanoi(plate[:-1], mid, end)
+    hanoi(n - 1, start, 6 - start - end)
+    print(f'{start} {end}')
+    hanoi(n - 1, 6 - start - end, end)
 
 
 K = int(sys.stdin.readline())
 
-result = []
-hanoi(list(range(1, K + 1)), 1, 3)
+print(2**K - 1)
+hanoi(n=K, start=1, end=3)
 
-print(len(result))
-for i, j in result:
-    print(i, j)
+
+# Solution 2 (faster than Solution 1)
+def hanoi(n: int, start: int, end: int) -> str:
+    if n == 1:
+        return f'{start} {end}'
+
+    if (n, start, end) in path:
+        return path[(n, start, end)]
+
+    # lst: list[str]
+    lst = [hanoi(n - 1, start, 6 - start - end), f'{start} {end}', hanoi(n - 1, 6 - start - end, end)]
+    path[(n, start, end)] = '\n'.join(lst)
+
+    return path[(n, start, end)]
+
+
+K = int(sys.stdin.readline())
+
+# dictionary for reducing duplication
+path = collections.defaultdict(str)
+
+print(2**K - 1)
+print(hanoi(n=K, start=1, end=3))
