@@ -27,4 +27,3 @@ for i in range(len(N)):
         break
 
 print(min(abs(100 - int(N)), int(N) - int(approx_1), int(approx_2) - int(N)))
-
