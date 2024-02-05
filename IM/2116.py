@@ -19,7 +19,5 @@ for start in range(6):
     bottom, top = start, opposite[start]
     for n in range(N):
         total += max_side(n)
-        print(max_side(n))
-    break
     result = max(result, total)
 print(result)
