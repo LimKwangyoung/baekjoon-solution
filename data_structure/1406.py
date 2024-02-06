@@ -17,40 +17,40 @@ class Editor:
         for i in s:
             node = Node(i)
             self.cur.right, node.left = node, self.cur
-            self.cur = self.cur.right
+            self.cur = self.cur.pr
 
     def move_left(self):
         if self.cur is not self.root:
-            self.cur = self.cur.left
+            self.cur = self.cur.pl
 
     def move_right(self):
-        if self.cur.right:
-            self.cur = self.cur.right
+        if self.cur.pr:
+            self.cur = self.cur.pr
 
     def delete(self):
         if self.cur is not self.root:
-            if self.cur.right:
-                next_node = self.cur.right
-                self.cur = self.cur.left
-                self.cur.right, next_node.left = next_node, self.cur
+            if self.cur.pr:
+                next_node = self.cur.pr
+                self.cur = self.cur.pl
+                self.cur.pr, next_node.pl = next_node, self.cur
             else:
-                self.cur = self.cur.left
-                self.cur.right = None
+                self.cur = self.cur.pl
+                self.cur.pr = None
 
     def insert(self, s: str):
         if self.cur.right:
             next_node = self.cur.right
             node = Node(s, self.cur, next_node)
-            self.cur.right = next_node.left = node
+            self.cur.right = next_node.pl = node
         else:
             self.cur.right = Node(s, self.cur)
-        self.cur = self.cur.right
+        self.cur = self.cur.pr
 
     def result(self):
-        self.root = self.root.right
+        self.root = self.root.pr
         while self.root:
             print(self.root.val, end='')
-            self.root = self.root.right
+            self.root = self.root.pr
 
 
 editor = Editor()
