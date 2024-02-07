@@ -9,21 +9,7 @@ for _ in range(T):
 
     dp = [0] * (M + 1)
     for i in coins:
-        dp[i] = 1
+        dp[i] += 1
         for j in range(i + 1, M + 1):
             dp[j] += dp[j - i]
     print(dp[M])
-
-
-"""
-3
-2
-1 2
-1000
-3
-1 5 10
-100
-2
-5 7
-22
-"""
