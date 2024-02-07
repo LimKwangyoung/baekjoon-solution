@@ -10,12 +10,8 @@ for _ in range(T):
     dp = [0] * (M + 1)
     for i in coins:
         dp[i] = 1
-
-    for i in range(1, M + 1):
-        if dp[i]:
-            for j in coins:
-                if i + j < M + 1:
-                    dp[i + j] += dp[i]
+        for j in range(i + 1, M + 1):
+            dp[j] += dp[j - i]
     print(dp[M])
 
 
