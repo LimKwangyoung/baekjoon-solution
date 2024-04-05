@@ -15,13 +15,14 @@ def inorder(node: str, level: int) -> None:
 
 N = int(sys.stdin.readline())
 
-roots = [True] * (N + 1)
 graph = dict()
+roots = [True] * (N + 1)
 for _ in range(N):
-    parent, *child = sys.stdin.readline().split()
+    parent, *child = sys.stdin.readline().rstrip().split()
     graph[parent] = child
     for i in child:
-        roots[int(i)] = False
+        if i != '-1':
+            roots[int(i)] = False
 
 for i in range(1, N + 1):
     if roots[i]:
