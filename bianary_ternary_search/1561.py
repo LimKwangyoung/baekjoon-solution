@@ -7,10 +7,9 @@ if N <= M:
     print(N)
 else:
     left, right = 1, 30 * N
-    N -= M
     while left <= right:
         mid = (left + right) // 2
-        num = sum(mid // n for n in times)
+        num = sum(mid // n + 1 for n in times)
 
         if num >= N:
             right = mid - 1
@@ -20,7 +19,7 @@ else:
     left -= 1
     total = 0
     for i in range(M):
-        total += (left // times[i])
+        total += (left // times[i] + 1)
         times[i] -= left % times[i]
 
     idx = -1
