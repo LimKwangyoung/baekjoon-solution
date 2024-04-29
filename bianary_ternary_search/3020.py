@@ -14,7 +14,7 @@ minimum = float('inf')
 cnt = 0
 for h in range(1, H + 1):
     down_cnt = N // 2 - bisect.bisect_right(down, h - 1)
-    up_cnt = N // 2 - bisect.bisect_left(up, H + 1 - h)
+    up_cnt = N // 2 - bisect.bisect_right(up, H - h)
     tmp = down_cnt + up_cnt
     if tmp < minimum:
         minimum = tmp
