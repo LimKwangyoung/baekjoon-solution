@@ -21,14 +21,17 @@ last_A_idx = last_B_idx = -1
 for num in sorted(A, reverse=True):
     if num in B_index:
         tmp = A_index[num].popleft()
-        while last_A_idx < tmp and last_B_idx < B_index[num][0]:
-            result += str(num)
-            last_A_idx = tmp
-            last_B_idx = B_index[num].popleft()
-            if len(B_index[num]) <= 0:
-                del B_index[num]
+        if last_A_idx < tmp:
+            while len(B_index[num]) > 0 and B_index[num][0] < last_B_idx:
+                B_index[num].popleft()
+            if len(B_index[num]) != 0:
+                last_A_idx = tmp
+                last_B_idx = B_index[num].popleft()
+                result += str(num)
+
 print(len(result))
-print(' '.join(result))
+if len(result) > 0:
+    print(' '.join(result))
 
 """
 6
