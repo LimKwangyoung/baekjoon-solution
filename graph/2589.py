@@ -5,13 +5,8 @@ height, width = map(int, sys.stdin.readline().split())
 board = [sys.stdin.readline().strip() for _ in range(height)]
 
 result = float('-inf')
-flag = False
 for i in range(height):
-    if flag:
-        break
     for j in range(width):
-        if flag:
-            break
         if board[i][j] == 'L':
             visited = [[0] * width for _ in range(height)]
             visited[i][j] = 1
@@ -24,10 +19,4 @@ for i in range(height):
                         que.append((r, c))
                         visited[r][c] = visited[row][col] + 1
                         result = max(result, visited[r][c] - 1)
-
-                        if result == width + height - 2:
-                            flag = True
-                            break
-                if flag:
-                    break
 print(result)
